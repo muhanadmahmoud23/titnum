@@ -76,9 +76,9 @@
 
             <div class="post d-flex flex-column-fluid excel-form" id="kt_post">
                 <div id="kt_content_container" class="container">
-                    <div class="card">
-                        <div class="card-body py-3 pt-3">
-                            {!! Form::open(['route' => 'clientExcel', 'files' => true,'method'=>'post']) !!}
+                    <div class="card row">
+                        <div class="card-body py-3 pt-3 col-md-10">
+                            {!! Form::open(['route' => 'Coachimport', 'files' => true, 'method' => 'post']) !!}
                             @csrf
                             <div class="mb-12 align-items-center">
                                 <div class="col-md-3">
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        {!! Form::file('Excel', null, [
+                                        {!! Form::file('file', null, [
                                             'class' => 'form-control form-control-lg form-control-solid',
                                             'accept' => '.xlsx, .xls, .csv',
                                         ]) !!}
@@ -94,13 +94,17 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="col text-center">
-                                        <button class="btn btn-primary ">@lang('import')</button>
+                                        <button class="btn btn-lg  btn btn-lg -primary ">@lang('import')</button>
                                     </div>
                                 </div>
                             </div>
 
 
                             {!! Form::close() !!}
+
+                            <div class="col-md-2">
+                                <a href="{{asset('assets/excelTemplete/Coach.xlsx')}}"> <button class="btn-warning btn btn-lg">Coach Excel Templete</button> </a>
+                            </div>
                         </div>
                     </div>
                 </div>

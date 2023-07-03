@@ -36,18 +36,12 @@ class ClientHomeController extends Controller
     }
     public function notifications()
     {
-        $notifications = Notification::all();
+        $notifications = Notification::where('from','<',now())->where('to','>',now())->get();
         return view('client.notifications', compact('notifications'));
     }
 
     public function book_services(Request $request)
     {
-        // $UserSessions = DB::table('sessions')
-        //     ->join('session_payments', 'session_payments.session_id', '=', 'sessions.id')
-        //     ->where('session_payments.client_id', '=', $this->getUserClientId())
-        //     ->distinct('sessions.id')
-        //     ->pluck('sessions.id');
-
         $services = Session::with('coaches')->get();
 
         if ($request->id) {
@@ -92,7 +86,7 @@ class ClientHomeController extends Controller
 
     public function profile()
     {
-        $profile = Client::with('register')->where('id',$this->getUserClientId())->first();
+        $profile = Client::with('register')->where('id', $this->getUserClientId())->first();
         return view('client.profile', compact('profile'));
     }
 

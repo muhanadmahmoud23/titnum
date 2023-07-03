@@ -1,5 +1,5 @@
 <?php
-$notificationCount = \App\Models\Notification::count();
+$notificationCount = \App\Models\Notification::where('from','<',now())->where('to','>',now())->count();
 ?>
 
 <div class="nav-mobile">

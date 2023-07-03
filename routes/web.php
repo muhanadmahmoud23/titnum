@@ -12,21 +12,6 @@ use App\Http\Controllers\SessionPaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
 Route::middleware('auth', 'admin')->group(function () {
@@ -38,7 +23,12 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::resource('session', SessionController::class);
     Route::resource('session-payment', SessionPaymentController::class);
     Route::resource('notification', NotificationsController::class);
-    Route::post('/clientImport',[ExcelController::class,'clientImport'])->name('clientImport');
+    Route::post('/Registerimport',[ExcelController::class,'Registerimport'])->name('Registerimport');
+    Route::post('/Paymentimport',[ExcelController::class,'Paymentimport'])->name('Paymentimport');
+    Route::post('/Clientimport',[ExcelController::class,'Clientimport'])->name('Clientimport');
+    Route::post('/Coachimport',[ExcelController::class,'Coachimport'])->name('Coachimport');
+    Route::post('/Sessionimport',[ExcelController::class,'Sessionimport'])->name('Sessionimport');
+    Route::post('/Notificationimport',[ExcelController::class,'Notificationimport'])->name('Notificationimport');
 });
 
 Route::middleware('auth', 'client')->prefix('client')->group(function () {

@@ -82,9 +82,9 @@
 
             <div class="post d-flex flex-column-fluid excel-form" id="kt_post">
                 <div id="kt_content_container" class="container">
-                    <div class="card">
-                        <div class="card-body py-3 pt-3">
-                            {!! Form::open(['route' => 'clientImport', 'files' => true, 'method' => 'post']) !!}
+                    <div class="card row">
+                        <div class="card-body py-3 pt-3 col-md-10">
+                            {!! Form::open(['route' => 'Registerimport', 'files' => true, 'method' => 'post']) !!}
                             @csrf
                             <div class="mb-12 align-items-center">
                                 <div class="col-md-3">
@@ -107,6 +107,10 @@
 
 
                             {!! Form::close() !!}
+
+                            <div class="col-md-2">
+                                <a href="{{asset('assets/excelTemplete/Register.xlsx')}}"> <button class="btn-warning btn btn-lg">Register Excel Templete</button> </a>
+                            </div>
                         </div>
                     </div>
                 </div>
